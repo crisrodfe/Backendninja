@@ -9,25 +9,33 @@ import javax.persistence.GeneratedValue;
 @Entity
 @Table(name = "contact")
 public class Contact {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="firstname")
+
+	@Column(name = "firstname")
 	private String firstname;
-	
-	@Column(name="lastname")
+
+	@Column(name = "lastname")
 	private String lastname;
-	
-	@Column(name="telephone")
+
+	@Column(name = "telephone")
 	private String telephone;
-	
-	@Column(name="city")
+
+	@Column(name = "city")
 	private String city;
 
 	public Contact() {
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Contact(String firstname, String lastname, String telephone, String city) {
@@ -75,7 +83,5 @@ public class Contact {
 		return "Contact [firstname=" + firstname + ", lastname=" + lastname + ", telephone=" + telephone + ", city="
 				+ city + "]";
 	}
-	
-	
 
 }

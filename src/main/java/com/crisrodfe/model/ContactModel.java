@@ -1,6 +1,8 @@
 package com.crisrodfe.model;
 
-public class ContactModel {
+public class ContactModel 
+{
+
 	private int id;
 	private String firstname;
 	private String lastname;
@@ -57,6 +59,12 @@ public class ContactModel {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	@Override
+	public String toString() {
+		return "ContactModel [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", telephone="
+				+ telephone + ", city=" + city + "]";
 	}
 
 }
