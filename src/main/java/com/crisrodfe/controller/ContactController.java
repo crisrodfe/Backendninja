@@ -4,6 +4,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.crisrodfe.constant.ViewConstant;
-import com.crisrodfe.entity.Contact;
 import com.crisrodfe.model.ContactModel;
 import com.crisrodfe.service.ContactService;
 
@@ -28,6 +30,7 @@ public class ContactController
 	@Qualifier("contactServiceImpl")
 	private ContactService contactService;
 	
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@GetMapping("/contactform")
 	private String redirectContactForm(@RequestParam(name="id", required=false) int id, Model model)
 	{
@@ -66,6 +69,9 @@ public class ContactController
 	public ModelAndView showContacts()
 	{
 		ModelAndView mav = new ModelAndView(ViewConstant.CONTACTS_VIEW);
+		
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mav.addObject("username",user.getUsername());
 		mav.addObject("contacts",contactService.listAllContacts());
 		
 		return mav;
