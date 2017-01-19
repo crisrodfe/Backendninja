@@ -51,7 +51,6 @@ public class RequestTimeInterceptor  extends HandlerInterceptorAdapter
 			username = auth.getName();
 		}
 		
-		
 		logRepository.save(new com.crisrodfe.entity.Log(new Date(),auth.getDetails().toString(),username,url));
 		
 		LOG.info("URL to : '" + url + "' -- in: '" + System.currentTimeMillis() + startTime + "ms'");
