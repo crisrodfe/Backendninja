@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.crisrodfe.model.ContactModel;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Clase sencilla de ejemplo de una petición REST. Devuelve los datos de un Contacto creado manualmente, formato string json. Desde el front end podremos usarlo.
+ */
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/rest")
 public class RestController

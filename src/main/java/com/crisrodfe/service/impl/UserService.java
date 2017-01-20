@@ -19,7 +19,11 @@ import org.springframework.stereotype.Service;
 import com.crisrodfe.entity.UserRole;
 import com.crisrodfe.repository.UserRepository;
 
-
+/**
+ * 
+ * @author CrisRodFe
+ * Clase de tipo Servicio que implementa un interfaz de Spring security para añadir la funcionalidad de autenticación.
+ */
 @Service("userService")
 public class UserService implements UserDetailsService
 {

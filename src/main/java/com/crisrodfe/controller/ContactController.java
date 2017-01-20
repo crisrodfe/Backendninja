@@ -20,16 +20,30 @@ import com.crisrodfe.constant.ViewConstant;
 import com.crisrodfe.model.ContactModel;
 import com.crisrodfe.service.ContactService;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Clase Controller que gestiona las peticiones del formulario de añadir, eliminar, modificar contacto, etc.
+ */
 @Controller
 @RequestMapping("/contacts")
 public class ContactController
 {
 	private static final Log LOG = LogFactory.getLog(ContactController.class);
 	
+
 	@Autowired
 	@Qualifier("contactServiceImpl")
 	private ContactService contactService;
 	
+	/**
+	 * 
+	 * @param id
+	 * @param model
+	 * @return String  - template view del formulario de contactos
+	 * 
+	 * Manda los datos de un contacto a partir de un id recibido de la vista como parámetro.
+	 */
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@GetMapping("/contactform")
 	private String redirectContactForm(@RequestParam(name="id", required=false) int id, Model model)
@@ -43,12 +57,23 @@ public class ContactController
 		return ViewConstant.CONTACT_FORM_VIEW;
 	}
 	
+	/**
+	 * 
+	 * @return String - redireccion a template view de la lista de contactos de la base de datos
+	 */
 	@GetMapping("/cancel")
 	public String cancel()
 	{
 		return "redirect:/contacts/showcontacts";
 	}
 	
+	/**
+	 * @param contactModel
+	 * @param model
+	 * @return String  - Redirección a /showcontacts que mostrará la lista de contactos de la base de datos
+	 * 
+	 * Lanza un resultado positivo o negativo según se haya podido realizar o no la acción de añadir contacto.
+	 */
 	@PostMapping("/addcontact")
 	public String addContact(@ModelAttribute(name="contactModel") ContactModel contactModel, Model model)
 	{
@@ -65,6 +90,11 @@ public class ContactController
 		return "redirect:/contacts/showcontacts";
 	}
 	
+	/**
+	 * 
+	 * @return ModelAndView - retorna la vista con los datos correspondientes (username y comntacts) añadidos
+	 * Recibe desde un servicio la lista de contactos de la base de datos.
+ 	 */
 	@GetMapping("/showcontacts")
 	public ModelAndView showContacts()
 	{
@@ -77,6 +107,13 @@ public class ContactController
 		return mav;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return  ModelAndView - retorna una llamada al método que nos devuelve la vista con la lista de contactos
+	 * 
+	 * Elimina un usuario con el id recibido por parámetro usando para ello nuestro servicio correspondiente que a su vez hará uso del repositorio JPA
+	 */
 	@GetMapping("/removecontact")
 	public ModelAndView removeContact(@RequestParam(name="id", required=true) int id )
 	{

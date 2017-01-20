@@ -10,6 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Entity que representa la tabla 'user_role' de nuestra base de datos donde guardaremos la informacion los roles de cada usuario registrado de la app. 
+ * Anotamos como columnas cada una de las propiedades. Además el user_role_id lo marcamos como id y que genere el valor automáticamente.
+ * Tambien usamos otras notaciones como @ManyToOne para indicar el tipo de relacion entre columnas.
+ */
 @Entity
 @Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
 public class UserRole 

@@ -6,6 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Entity que representa la tabla 'contact' de nuestra base de datos donde guardaremos la informacion de los contactos. 
+ * Anotamos como columnas cada una de las propiedades. Además el id lo marcamos como tal y que genere el valor automáticamente.
+ */
 @Entity
 @Table(name = "contact")
 public class Contact {

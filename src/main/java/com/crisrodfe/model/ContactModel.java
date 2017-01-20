@@ -1,5 +1,10 @@
 package com.crisrodfe.model;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Modelo que representa nuestra Entity Contact.
+ */
 public class ContactModel 
 {
 

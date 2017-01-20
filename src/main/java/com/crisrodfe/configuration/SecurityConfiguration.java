@@ -11,6 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Clase de configuración para Spring Security.
+ */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
@@ -30,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	protected void configure(HttpSecurity http) throws Exception 
 	{
 		http.authorizeRequests()
-			.antMatchers("/css/*","/imgs/*").permitAll()
+			.antMatchers("/css/*","/imgs/*").permitAll() //Permitimos que se carguen todas las peticiones a los recursos de css e imágenes
 			.anyRequest().authenticated()
 			.and()
 			.formLogin().loginPage("/login").loginProcessingUrl("/logincheck")

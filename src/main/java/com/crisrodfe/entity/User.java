@@ -10,6 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Entity que representa la tabla 'user' de nuestra base de datos donde guardaremos la informacion los usuarios registrados que pueden usar la app.
+ * Anotamos como columnas cada una de las propiedades. Además el username lo marcamos como id.
+ * Tambien usamos otras notaciones como @OneToMany para indicar el tipo de relacion entre columnas y configuramos algunas constraints
+ */
 @Entity
 @Table(name = "users")
 public class User

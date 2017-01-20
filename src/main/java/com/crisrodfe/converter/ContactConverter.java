@@ -5,9 +5,20 @@ import org.springframework.stereotype.Component;
 import com.crisrodfe.entity.Contact;
 import com.crisrodfe.model.ContactModel;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Clase que convierte nuestra Entity Contact en nustro Model ContactModel y viceversa.
+ * Queremos que nuestros Controller solo usen modelos no entidades.
+ */
 @Component("contactConverter")
 public class ContactConverter
 {
+	/**
+	 * 
+	 * @param contactModel
+	 * @return Contact
+	 */
 	public Contact modelToEntity(ContactModel contactModel)
 	{
 		Contact contact = new Contact();
@@ -20,6 +31,11 @@ public class ContactConverter
 		return contact;
 	}
 	
+	/**
+	 * 
+	 * @param contact
+	 * @return ContactModel
+	 */
 	public ContactModel entityToModel(Contact contact)
 	{
 		ContactModel contactModel = new ContactModel();

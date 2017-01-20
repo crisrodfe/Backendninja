@@ -1,6 +1,7 @@
 package com.crisrodfe.model;
 
-public class UserCredential {
+public class UserCredential
+{
 	private String username;
 	private String password;
 

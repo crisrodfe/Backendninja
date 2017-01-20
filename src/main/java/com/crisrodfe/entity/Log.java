@@ -8,9 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Entity que representa la tabla 'log' de nuestra base de datos donde guardaremos la informacion de las peticiones que se realicen en nuestra app. 
+ * Anotamos como columnas cada una de las propiedades. Además el id lo marcamos como tal y que genere el valor automáticamente.
+ */
 @Entity
 @Table(name = "log")
-public class Log {
+public class Log 
+{
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id")

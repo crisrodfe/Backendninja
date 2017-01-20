@@ -16,7 +16,12 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.crisrodfe.repository.LogRepository;
 
-//Cada petición que se haga entrará por esta clase/componente
+
+/**
+ * 
+ * @author CrisRodFe
+ * Cada petición que se haga entrará por esta clase/componente y mediremos cuanto tarda
+ */
 @Component("requestTimeInterceptor")
 public class RequestTimeInterceptor  extends HandlerInterceptorAdapter
 {
@@ -27,10 +32,10 @@ public class RequestTimeInterceptor  extends HandlerInterceptorAdapter
 	
 	private static final Log LOG = LogFactory.getLog(RequestTimeInterceptor.class);
 
-	//Se ejecuta antes de entrar en el método del controlador
+	//Se ejecuta antes de entrar en el método del controlador dependiendo de la petición que se realice desde la vista
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
+	{
 		request.setAttribute("startTime", System.currentTimeMillis());
 		
 		return true;
@@ -39,9 +44,8 @@ public class RequestTimeInterceptor  extends HandlerInterceptorAdapter
 	
 	//Se ejecuta antes de devolver la vista del navegador,al final del método del controlador, antes justo del return.
 	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception
+	{	
 		long startTime = (long) request.getAttribute("startTime");
 		String url = request.getRequestURL().toString();
 		String username = "";
@@ -56,7 +60,4 @@ public class RequestTimeInterceptor  extends HandlerInterceptorAdapter
 		LOG.info("URL to : '" + url + "' -- in: '" + System.currentTimeMillis() + startTime + "ms'");
 		
 	}
-
-
-
 }

@@ -8,6 +8,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.crisrodfe.component.RequestTimeInterceptor;
 
+/**
+ * 
+ * @author CrisRodFe
+ * Clase de configuración para poder tener un Interceptor en nuestro proyecto.
+ */
 @Configuration
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter
 {

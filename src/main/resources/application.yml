@@ -1,12 +1,12 @@
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/mydb?useSSL=false
+  datasource: #Configuración de acceso a nuestra base de datos mysql
+    url: jdbc:mysql://localhost:3306/mydb?useSSL=false 
     username: root
     password: root
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update 
+      ddl-auto: update #Propiedad configurada para que en el caso de encontrar cambios en las Entity, los replique en nuestra base de datos
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
